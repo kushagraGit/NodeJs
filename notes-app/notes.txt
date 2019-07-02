@@ -1,0 +1,2 @@
+This is text from Node JS
+This is a new line from append function
