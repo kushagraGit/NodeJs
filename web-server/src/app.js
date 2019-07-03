@@ -1,15 +1,26 @@
+const path = require('path')
 const express = require('express')
 
 const app = express()
+const publicDirectoryPath = path.join(__dirname,'../public')
+
+app.set('view engine','hbs')
+app.use(express.static(publicDirectoryPath))
 
 app.get('',(req,res) => {
-    res.send('<h5>Weather App</h5>')
+    res.render('index')
 })
 
-app.get('/about',(req,res)=>{
-    res.send('<title>About</title>'+
-    '<body>About page with title</body>')
-})
+// app.get('',(req,res) => {
+//     res.send()
+// })
+
+// app.get('/about',(req,res)=>{
+//     const aboutPagePath = publicDirectoryPath + '/about.html'
+//     console.log(aboutPagePath)
+//     app.use(express.static(aboutPagePath))
+//     res.send()
+// })
 
 app.get('/weather',(req,res)=>{
     res.send({
@@ -18,12 +29,12 @@ app.get('/weather',(req,res)=>{
     })
 })
 
-app.get('/help',(req,res) => {
-    res.send({
-        name: 'Kushagra',
-        age: 25
-    })
-})
+// app.get('/help',(req,res) => {
+//     res.send({
+//         name: 'Kushagra',
+//         age: 25
+//     })
+// })
 
 app.listen(8080, () => {
     console.log('Server is up')
