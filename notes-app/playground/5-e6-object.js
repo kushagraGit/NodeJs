@@ -20,8 +20,10 @@ const {label, stock} = prod
 console.log(label)
 console.log(stock)
 
-const product = ((type, {label, price, stock}) =>{
+const product = ((type, {label, price, stock} = {}) =>{
     console.log(type,label,price,stock)
 })
 
 product('NSE',prod)
+
+product('NSE')
