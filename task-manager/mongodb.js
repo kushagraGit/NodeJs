@@ -10,23 +10,23 @@ const {MongoClient, ObjectID} = require('mongodb')
 // console.log(id.id.length)
 // console.log(id.toHexString().length)
 
-const connectionUrl = 'mongodb://127.0.0.1:27017'
+const connectionUrl = 'mongodb://13.59.247.93:27017'
 const databaseName = 'task-manager'
 
 MongoClient.connect(connectionUrl, {useNewParserUrl: true}, (error, client)=>{
     if(error){
-        return console.log('Unable to connect to database')
+        return console.log('Unable to connect to database',error)
     }
 
     const db = client.db(databaseName)
     
-    db.collection('tasks').deleteOne({
-        description: 'Iron the clothes'
-    }).then((result)=>{
-        console.log('Success')
-    }).catch((error)=>{
-        console.log(error)
-    })
+    // db.collection('tasks').deleteOne({
+    //     description: 'Iron the clothes'
+    // }).then((result)=>{
+    //     console.log('Success')
+    // }).catch((error)=>{
+    //     console.log(error)
+    // })
 
     client.close()
 })
